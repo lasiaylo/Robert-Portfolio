@@ -1,0 +1,61 @@
+@import "../variables";
+
+/* stylelint-disable-next-line */
+html, body, #___gatsby, #gatsby-focus-wrapper {
+  height: 100%;
+  margin: 0;
+  background: $background-color
+}
+
+
+* {
+  //outline: 0.5px dashed $primary-color;
+}
+
+.site-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-width: $site-width;
+  min-height: 100%;
+  padding: $page-margin-top $gap-large $page-margin-bottom;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include mobile {
+    padding: $page-margin-top $gap-med $page-margin-bottom;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: $gap-small;
+}
+
+.separator {
+  height: 1px;
+  margin-bottom: $gap-med;
+  background-color: $primary-color;
+  animation: fade 6s
+}
+
+.footer {
+  display: flex;
+  margin-top: auto;
+
+  .chatbox-video {
+    animation: fade 4s
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1
+  }
+
+}

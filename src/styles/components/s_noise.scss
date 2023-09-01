@@ -1,0 +1,101 @@
+@import '../variables';
+
+$empty: contrast(0%) brightness(9000%) opacity(50.5%);
+$filled: contrast(180%) brightness(100000%) opacity(95%);
+$text-gradient: radial-gradient(circle at -50%, (rgba(0 0 0 / 100%) -50%, rgb(0 0 0 / 0%) 400%))
+no-repeat,
+url('../../../static/images/noise.svg');
+$background-gradient: radial-gradient(
+    circle at 0% -80%,
+      (rgba(0 0 0 / 100%) -50%, rgb(0 0 0 / 0%) 500%)
+)
+no-repeat,
+url('../../../static/images/noise.svg');
+
+::selection {
+  background-color: #1a1515;
+  -webkit-text-fill-color: $background-color;
+}
+
+.isolate {
+  position: relative;
+  display: block;
+  filter: grayscale(75%);
+  isolation: isolate;
+
+  .children {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.noise {
+  background: $text-gradient;
+  filter: $filled;
+  background-clip: text;
+  animation: ink-fill 10s;
+  animation-delay: -3.4s;
+  -webkit-text-fill-color: transparent;
+}
+
+.noise-transition {
+  display: grid;
+  filter: grayscale(75%);
+  isolation: isolate;
+}
+
+.noise-item {
+  grid-area: 1/1;
+  background: $text-gradient;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.noise-curr {
+  &[data-active="true"] {
+    background:
+      linear-gradient(20deg, black -100%, transparent 400%)
+      no-repeat,
+      url('../../../static/images/noiseTexture.png');
+    background-clip: text;
+    mix-blend-mode: difference;
+  }
+}
+
+.noise-indicator {
+  z-index: -1;
+  grid-area: 1/1;
+  width: 100%;
+  padding-top: $gap-small;
+  padding-bottom: $gap-small;
+  background: $background-gradient;
+  background-clip: padding-box;
+}
+
+//noinspection Stylelint
+@media all and (min-device-pixel-ratio: 0) and (resolution >= 0.001dpcm) {
+  .noise {
+    filter: $filled;
+  }
+}
+
+@keyframes ink-fill {
+  from {
+    filter: $empty;
+  }
+
+  to {
+    filter: $filled;
+  }
+}
+
+@keyframes ink-leave {
+  from {
+    filter: $filled;
+  }
+
+  to {
+    filter: $empty;
+  }
+}

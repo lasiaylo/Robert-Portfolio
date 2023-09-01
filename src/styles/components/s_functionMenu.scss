@@ -1,0 +1,10 @@
+@import '../variables';
+
+.menu-list {
+  list-style: none;
+}
+
+.menu-item {
+  cursor: pointer;
+  user-select: none;
+}

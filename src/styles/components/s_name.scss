@@ -1,0 +1,11 @@
+@import "../variables";
+
+@mixin name-animate {
+  color: $primary-color;
+}
+
+.name-container {
+  margin-top: auto;
+  margin-bottom: auto;
+  user-select: none;
+}

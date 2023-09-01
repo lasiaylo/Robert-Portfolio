@@ -1,0 +1,23 @@
+@import "../variables";
+
+.page-body {
+  display: grid;
+  grid-template:
+    'sidebar view';
+  grid-template-columns: minmax(0, 3fr)  minmax(0, 1fr);
+  grid-column-gap: $gap-x-large;
+  margin-bottom: $gap-x-large;
+
+  @include mobile {
+    grid-template-columns: minmax(0, 3fr)  minmax(0, 1fr);
+    grid-column-gap: $gap-med;
+  }
+
+  .side-bar {
+    grid-area: view;
+  }
+
+  .works-view {
+    grid-area: sidebar;
+  }
+}

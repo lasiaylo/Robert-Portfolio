@@ -1,0 +1,105 @@
+/* Breakpoints */
+$breakpoint-mobile-width: 600px;
+$breakpoint-mobile-height: 400px;
+
+@mixin desktop {
+  @media (width >= calc(#{$breakpoint-mobile-width} + 1px))  and (height >= calc(#{$breakpoint-mobile-height} + 1px)){
+    @content
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: $breakpoint-mobile-width), screen and (max-height: $breakpoint-mobile-height) {
+    @content
+  }
+}
+
+/* Palette */
+$background-color: #FFFEFA;
+$primary-color: #1c1c1b;
+$secondary-color: #868686;
+$fade-in-color: #8c8a85;
+$selected-color: #403F3D;
+$font: "Grenette Trial";
+
+/* Gaps */
+  $gap-x-large: 75px;
+  $gap-large: 35px;
+  $gap-med: 15px;
+  $gap-small: 5px;
+
+/* Site Margins */
+$site-width: 800px;
+$page-margin-top: 30px;
+$page-margin-bottom: $gap-large;
+$portrait-size: 140px;
+
+/* Fonts */
+@font-face {
+  font-family: 'Frame Head Trial';
+  font-weight: 100 900;
+  src: url('/static/fonts/frameHead/FrameHead-Bold-Trial.otf') format('otf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Grenette Trial';
+  font-weight: 100 900;
+  src: url('/static/fonts/grenette/grenette-regular-trial.otf') format('otf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Weave;
+  font-weight: 100 900;
+  src: url('/static/fonts/weave-regular-trial.otf') format('otf');
+  font-display: swap;
+}
+
+/* Font Hierarchy */
+
+@mixin button {
+  font: 1rem/1.2 $font, serif;
+  color: $secondary-color;
+  list-style: none;
+  user-select: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+button,
+ul {
+  all: unset;
+  display: block;
+}
+
+html {
+  font-size: 16px;
+}
+
+h1 {
+  font: 1.3rem/1.15 $font, serif;
+  font-weight: bold;
+}
+
+h2 {
+  margin: $gap-med 0;
+  font: 1.5rem/1.2 $font, serif;
+  color: $primary-color;
+}
+
+h3 {
+  @include button;
+}
+
+p {
+  max-width: 30ch;
+  font-family: $font, serif;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: $primary-color;
+}
