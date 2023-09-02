@@ -60,7 +60,10 @@ export default function IndexPage({
   const rolesToWorks: Record<string, IWork[]> = mapWorks(works);
   const roles = Object.keys(rolesToWorks);
 
-  const pageRole = startCase(hash.replace('#', ''));
+  const pageRole = startCase(hash
+    .replace('#', '')
+    .replace("-", " ")
+  );
   const [activeRole, setActiveRole] = useState(
     rolesToWorks.hasOwnProperty(pageRole) ? pageRole : roles[0]
   );

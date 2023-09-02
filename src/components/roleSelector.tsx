@@ -18,7 +18,7 @@ const RoleSelector = function RoleSelector({
           return {
             label: role,
             active: role.toLowerCase() == active.toLowerCase(),
-            callback: () => navigate(`#${role.toLowerCase()}`),
+            callback: () => navigate(`#${role.replace(/ /g,"-").toLowerCase()}`),
           };
         })}
       />
