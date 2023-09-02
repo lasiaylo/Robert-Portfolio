@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(1,0,0,1,-4.58634,10.7705)">
-        <g transform="matrix(44.6735,0,0,44.6735,33.0993,16.8123)">
-        </g>
-        <text x="8.305px" y="16.812px" style="font-family:'FrameTextTrial-Semibold', 'Frame Text Trial';font-weight:600;font-size:44.673px;fill:url(#_Radial1);">a</text>
+    <g transform="matrix(1,0,0,1,-2.38414,10.7705)">
+        <text x="8.305px" y="16.812px" style="font-family:'GrenetteTrial-SemiBold', 'Grenette Trial', serif;font-weight:600;font-size:44.673px;fill:url(#_Radial1);">r</text>
     </g>
     <g id="Layer1">
     </g>

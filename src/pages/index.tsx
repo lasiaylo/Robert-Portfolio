@@ -20,10 +20,6 @@ export const query = graphql`
         lastName
         email
         phoneNumber
-        blurb
-        portrait {
-          image: gatsbyImage(width: 140, height: 140)
-        }
         portraitVideo {
           file {
             url
