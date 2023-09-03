@@ -23,7 +23,7 @@ export default function FunctionMenu({
   // TODO: Refactor into separate component
   const items = buttons.map(({ active, callback, label }) => {
     return callback ? (
-      <NavigationMenu.Item className="menu-item">
+      <NavigationMenu.Item key={label} className="menu-item">
         <NavigationMenu.Link
           active={active}
           className="menu-link"
@@ -33,7 +33,7 @@ export default function FunctionMenu({
         </NavigationMenu.Link>
       </NavigationMenu.Item>
     ) : (
-      <Noise>
+      <Noise key={label} >
         <h3 className="menu-header">{label}</h3>
       </Noise>
     );

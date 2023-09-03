@@ -15,7 +15,7 @@ export default function WorksView(work: React.PropsWithChildren<IWork>) {
     <></>
   );
 
-  const transition = useTransition(previewVideo.file.url, {
+  const transition = useTransition(previewVideo?.file.url, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
