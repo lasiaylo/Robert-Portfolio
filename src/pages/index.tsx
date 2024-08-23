@@ -59,7 +59,7 @@ export default function IndexPage({
   });
   const rolesToWorks: Record<string, IWork[]> = mapWorks(works);
   // TODO: Fix hardcoded keys
-  const roles = ['Editing', 'Directing', 'Assistant Editing'];
+  const roles = ['Editing', 'Directing', 'Assistant Editing', 'Nimrod'];
 
   const pageRole = startCase(hash
     .replace('#', '')
