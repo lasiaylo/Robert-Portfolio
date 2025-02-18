@@ -4,10 +4,10 @@ import type { PageProps } from 'gatsby';
 import { graphql } from 'gatsby';
 
 import '../styles/pages/s_index.scss';
-import Header, { IContact } from '../components/header';
 import { Separator } from '@radix-ui/react-separator';
-import mapWorks, { IWork } from '../util/page/IndexUtils';
 import { startCase } from 'lodash';
+import Header, { IContact } from '../components/header';
+import mapWorks, { IWork } from '../util/page/IndexUtils';
 import Footer from '../components/footer';
 import PageBody from '../components/pageBody';
 import RoleSelector from '../components/roleSelector';
@@ -27,7 +27,11 @@ export const query = graphql`
         }
       }
     }
-
+    tabOrderResults: allContentfulTabOrder(limit: 1) {
+      nodes {
+        tabOrder
+      }
+    }
     workResults: allContentfulWork(sort: { datePublished: DESC }) {
       nodes {
         id
@@ -50,7 +54,7 @@ export const query = graphql`
 `;
 
 export default function IndexPage({
-  data: { infoResults, workResults },
+  data: { infoResults, tabOrderResults, workResults },
   location: { hash },
 }: PageProps<Queries.IndexQuery>) {
   const info: IContact = infoResults.nodes[0] as IContact;
@@ -59,12 +63,14 @@ export default function IndexPage({
   });
   const rolesToWorks: Record<string, IWork[]> = mapWorks(works);
   // TODO: Fix hardcoded keys
-  const roles = ['Nimrod', 'Editing', 'Directing'];
+  const { tabOrder } = tabOrderResults.nodes[0];
+  const tabs = (tabOrder ?? []).filter((e) => e !== null);
+  // @ts-ignore
+  // const rolesSet: Set<string> = new Set(tabs);
+  // works.forEach((work) => work.roles.forEach((role) => rolesSet.add(role)));
+  const roles: string[] = Array.from(tabs);
 
-  const pageRole = startCase(hash
-    .replace('#', '')
-    .replace("-", " ")
-  );
+  const pageRole = startCase(hash.replace('#', '').replace('-', ' '));
   const [activeRole, setActiveRole] = useState(
     rolesToWorks.hasOwnProperty(pageRole) ? pageRole : roles[0]
   );
