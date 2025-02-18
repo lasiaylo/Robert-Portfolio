@@ -10,6 +10,7 @@ export interface IWork {
   readonly previewVideo: { file: { url: string } };
   readonly previewImage: { image: IGatsbyImageData };
   readonly link: string;
+  readonly descriptionLong?: { descriptionLong: string };
 }
 
 const mapWorks = _.memoize(

@@ -39,6 +39,9 @@ export const query = graphql`
         name
         datePublished
         description
+        descriptionLong {
+          descriptionLong
+        }
         previewVideo {
           file {
             url

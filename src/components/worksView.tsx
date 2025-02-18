@@ -7,7 +7,7 @@ import '../styles/components/s_worksView.scss';
 import { animated, useTransition } from 'react-spring';
 
 export default function WorksView(work: React.PropsWithChildren<IWork>) {
-  const { link, previewVideo, previewImage, name, description, id } = work;
+  const { link, previewVideo, previewImage, name, descriptionLong, description, id } = work;
 
   const fallback = previewImage ? (
     <GatsbyImage className="preview" alt="" image={previewImage.image} />
@@ -53,7 +53,7 @@ export default function WorksView(work: React.PropsWithChildren<IWork>) {
         <h2>{name}</h2>
       </NoiseTransition>
       <NoiseTransition id={id}>
-        <p>{description}</p>
+        <p>{descriptionLong?.descriptionLong ?? description}</p>
       </NoiseTransition>
     </div>
   );
