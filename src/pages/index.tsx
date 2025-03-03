@@ -57,9 +57,9 @@ export const query = graphql`
 `;
 
 export default function IndexPage({
-  data: { infoResults, tabOrderResults, workResults },
-  location: { hash },
-}: PageProps<Queries.IndexQuery>) {
+                                    data: { infoResults, tabOrderResults, workResults },
+                                    location: { hash },
+                                  }: PageProps<Queries.IndexQuery>) {
   const info: IContact = infoResults.nodes[0] as IContact;
   const works: IWork[] = workResults.nodes.filter((i): i is IWork => {
     return typeof i === 'object';
@@ -73,15 +73,18 @@ export default function IndexPage({
   // works.forEach((work) => work.roles.forEach((role) => rolesSet.add(role)));
   const roles: string[] = Array.from(tabs);
 
-  const pageRole = startCase(hash.replace('#', '').replace('-', ' '));
-  const [activeRole, setActiveRole] = useState(
-    rolesToWorks.hasOwnProperty(pageRole) ? pageRole : roles[0]
-  );
+  const getRole = (hsh: string) => {
+    const formattedHash = startCase(hsh.replace('#', '').replace('-', ' '));
+    const role = Object.keys(rolesToWorks).find(
+      (r) => r.toLowerCase() === formattedHash.toLowerCase()
+    );
+    return role ?? roles[0];
+  };
+
+  const [activeRole, setActiveRole] = useState(getRole(hash));
 
   useEffect(() => {
-    if (rolesToWorks.hasOwnProperty(pageRole)) {
-      setActiveRole(pageRole);
-    }
+    setActiveRole(getRole(hash));
   }, [hash]);
 
   const pageWorks = rolesToWorks[activeRole];
